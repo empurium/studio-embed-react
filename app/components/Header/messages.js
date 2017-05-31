@@ -14,4 +14,12 @@ export default defineMessages({
     id: 'boilerplate.components.Header.features',
     defaultMessage: 'Features',
   },
+  github: {
+    id: 'boilerplate.components.Header.github',
+    defaultMessage: 'GitHub',
+  },
+  articles: {
+    id: 'boilerplate.components.Header.articles',
+    defaultMessage: 'Articles',
+  },
 });
