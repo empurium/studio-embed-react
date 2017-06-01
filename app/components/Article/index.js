@@ -14,13 +14,16 @@ import { makeSelectArticles } from 'containers/ArticlesPage/selectors';
 export class Article extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const item = this.props.item;
+    const preview = { __html: item.preview };
+    const content = { __html: item.content };
 
     // Render the content into a list item
     return (
       <div>
         <h1>{item.title}</h1>
         <Img src={item.image_url} alt={item.title} />
-        <p>{item.preview}</p>
+        <div dangerouslySetInnerHTML={preview}></div>
+        <div dangerouslySetInnerHTML={content}></div>
       </div>
     );
   }
