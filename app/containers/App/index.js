@@ -11,11 +11,10 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import Header from 'components/Header';
-import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
+  max-width: calc(850px + 16px * 2);
   margin: 0 auto;
   display: flex;
   min-height: 100%;
@@ -35,7 +34,6 @@ export function App(props) {
       />
       <Header />
       {React.Children.toArray(props.children)}
-      <Footer />
     </AppWrapper>
   );
 }
