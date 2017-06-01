@@ -1,21 +1,31 @@
-/*
- *
- * ArticlesPage
- *
- */
-
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+
 import { makeSelectLoading, makeSelectError } from 'containers/App/selectors';
 import ArticlesList from 'components/ArticlesList';
-
-import { loadArticles } from './actions';
+import { loadArticles as actionLoadArticles } from './actions';
 import { makeSelectArticles } from './selectors';
 
 export class ArticlesPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  componentDidMount() {
-    this.props.loadArticles();
+  static propTypes = {
+    loading: PropTypes.bool,
+    error: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.bool,
+    ]),
+    articles: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.bool,
+    ]),
+    loadArticles: PropTypes.func.isRequired,
+  };
+
+  componentWillMount() {
+    const { loading, error, loadArticles, articles } = this.props;
+    if (!loading && !error && articles === false) {
+      loadArticles();
+    }
   }
 
   render() {
@@ -27,37 +37,31 @@ export class ArticlesPage extends React.PureComponent { // eslint-disable-line r
     };
 
     return (
-      <ArticlesList {...articlesListProps} />
+      <div>
+        <Helmet
+          title="Articles"
+          meta={[
+            { name: 'description', content: 'Latest Articles' },
+          ]}
+        />
+        <ArticlesList {...articlesListProps} />
+      </div>
     );
   }
 }
 
-ArticlesPage.propTypes = {
-  loading: React.PropTypes.bool,
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.bool,
-  ]),
-  articles: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.bool,
-    React.PropTypes.any, // TODO - why is an object being passed?
-  ]),
-  loadArticles: React.PropTypes.func,
-};
 
-const mapStateToProps = createStructuredSelector({
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-  articles: makeSelectArticles(),
-});
+function mapStateToProps(state) {
+  return {
+    loading: makeSelectLoading()(state),
+    error: makeSelectError()(state),
+    articles: makeSelectArticles()(state),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadArticles: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadArticles());
-    },
+    loadArticles: () => dispatch(actionLoadArticles()),
   };
 }
 

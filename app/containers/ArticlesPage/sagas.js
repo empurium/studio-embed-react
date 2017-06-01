@@ -1,3 +1,13 @@
+/*
+ *
+ * ArticlesPage sagas
+ *
+ * These watch for specific events to come from Redux (takeLatest), fetch the
+ * data necessary for the given event, and then finally return it via an action
+ * where any number of Components could be listening for it.
+ *
+ */
+
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import request from 'utils/request';
@@ -9,11 +19,11 @@ import { articlesLoaded, articlesLoadingError } from './actions';
  * Gets the articles
  */
 export function* getArticles() {
-  const requestURL = 'https://publication.720global.com/articles?page=1&limit=10&tiered=false';
+  const requestURL = 'https://publication.720global.com/articles?page=1&limit=5&tiered=false';
 
   try {
     const articles = yield call(request, requestURL);
-    yield put(articlesLoaded(articles));
+    yield put(articlesLoaded(articles.data));
   } catch (err) {
     yield put(articlesLoadingError(err));
   }

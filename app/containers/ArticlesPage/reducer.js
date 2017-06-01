@@ -1,6 +1,10 @@
 /*
  *
- * ArticlesPage reducer
+ * ArticlesPage reducers
+ *
+ * These are used to watch specific types of events occurring in Redux, and only
+ * act upon the events that we care about. They will modify the Redux state as
+ * needed based on the given event.
  *
  */
 

@@ -14,6 +14,11 @@ import { combineReducers } from 'redux-immutable';
 import { List } from 'immutable';
 
 import {
+  LOAD_ARTICLES_SUCCESS,
+  LOAD_ARTICLES,
+  LOAD_ARTICLES_ERROR,
+} from 'containers/ArticlesPage/constants';
+import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
@@ -22,10 +27,13 @@ import {
 function loading(state = false, action) {
   switch (action.type) {
     case LOAD_REPOS:
+    case LOAD_ARTICLES:
       return true;
     case LOAD_REPOS_SUCCESS:
+    case LOAD_ARTICLES_SUCCESS:
       return false;
     case LOAD_REPOS_ERROR:
+    case LOAD_ARTICLES_ERROR:
       return false;
     default:
       return state;
@@ -35,10 +43,13 @@ function loading(state = false, action) {
 function error(state = false, action) {
   switch (action.type) {
     case LOAD_REPOS:
+    case LOAD_ARTICLES:
       return false;
     case LOAD_REPOS_SUCCESS:
+    case LOAD_ARTICLES_SUCCESS:
       return false;
     case LOAD_REPOS_ERROR:
+    case LOAD_ARTICLES_ERROR:
       return action.error;
     default:
       return state;

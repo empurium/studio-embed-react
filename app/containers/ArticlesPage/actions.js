@@ -2,6 +2,9 @@
  *
  * ArticlesPage actions
  *
+ * These are used both when dispatching an action into Redux, and for subscribing
+ * to Redux state changes so that the Components can update accordingly.
+ *
  */
 
 import {

@@ -18,7 +18,7 @@ const ArticlesList = ({ loading, error, articles }) => {
   }
 
   if (articles !== false) {
-    return <List items={articles.data} component={Article} />;
+    return <List items={articles} component={Article} />;
   }
 
   return null;
@@ -27,7 +27,10 @@ const ArticlesList = ({ loading, error, articles }) => {
 ArticlesList.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.any,
-  articles: PropTypes.any,
+  articles: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.bool,
+  ]),
 };
 
 export default ArticlesList;
