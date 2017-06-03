@@ -13,10 +13,10 @@
 import { createSelector } from 'reselect';
 import { List } from 'immutable';
 
-const selectArticlesPage = () => (state) => state.get('articlesPage');
+const selectArticlesPage = (state) => state.get('articlesPage');
 
 const makeSelectArticles = () => createSelector(
-  selectArticlesPage(), // TODO - createSelector() should be executing this, but it isn't?
+  selectArticlesPage,
   (articlesState) => {
     const articles = articlesState.get('articles');
     if (List.isList(articles)) {
