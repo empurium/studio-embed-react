@@ -40,7 +40,7 @@ describe('rendering in browser', () => {
     matchAndRender();
     const mock = ReactDOM.render.mock;
     const args = mock.calls[0];
-    expect(document.getElementById).toHaveBeenCalledWith('app');
+    expect(document.getElementById).toHaveBeenCalledWith('publication-studio-app');
     expect(args[1]).toEqual(domEl);
   });
 
@@ -48,7 +48,7 @@ describe('rendering in browser', () => {
     matchAndRender();
     const mock = ReactDOM.render.mock;
     const args = mock.calls[0];
-    expect(document.getElementById).toHaveBeenCalledWith('app');
+    expect(document.getElementById).toHaveBeenCalledWith('publication-studio-app');
     expect(args[0].type).toBe(AppRoot);
   });
 });
