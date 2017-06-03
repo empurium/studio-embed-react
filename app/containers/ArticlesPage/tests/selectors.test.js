@@ -1,10 +1,50 @@
-// import { fromJS } from 'immutable';
-// import { makeSelectArticlesPageDomain } from '../selectors';
+import { fromJS, List } from 'immutable';
+import {
+  selectArticlesPage,
+  makeSelectArticles,
+} from '../selectors';
 
-// const selector = makeSelectArticlesPageDomain();
 
-describe('makeSelectArticlesPageDomain', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+describe('selectArticlesPage', () => {
+  it('should select the articlesPage state', () => {
+    const articlesPageState = fromJS({});
+    const mockedState = fromJS({
+      articlesPage: articlesPageState,
+    });
+
+    expect(selectArticlesPage(mockedState)).toEqual(articlesPageState);
+  });
+});
+
+describe('makeSelectArticles', () => {
+  it('should select the articles', () => {
+    const articlesSelector = makeSelectArticles();
+    const articles = [
+      { title: 'article 1' },
+      { title: 'article 2' },
+    ];
+    const mockedState = fromJS({
+      articlesPage: {
+        articles,
+      },
+    });
+
+    expect(articlesSelector(mockedState)).toEqual(articles);
+  });
+
+  it('should select the articles after converting from a List', () => {
+    const articlesSelector = makeSelectArticles();
+    const articles = [
+      { title: 'article 1' },
+      { title: 'article 2' },
+    ];
+    const articlesList = new List(articles);
+    const mockedState = fromJS({
+      articlesPage: {
+        articles: articlesList,
+      },
+    });
+
+    expect(articlesSelector(mockedState)).toEqual(articles);
   });
 });
