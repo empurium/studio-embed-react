@@ -16,8 +16,8 @@ const Article = ({ item }) => { // eslint-disable-line react/prefer-stateless-fu
     <div>
       <h1>{item.title}</h1>
       <Img src={item.image_url} alt={item.title} />
-      <div className="preview" dangerouslySetInnerHTML={preview}></div>
-      <div className="content" dangerouslySetInnerHTML={content}></div>
+      <div className="preview" dangerouslySetInnerHTML={preview} />
+      <div className="content" dangerouslySetInnerHTML={content} />
     </div>
   );
 };
