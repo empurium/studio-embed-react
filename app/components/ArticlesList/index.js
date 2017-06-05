@@ -5,7 +5,7 @@ import ListItem from 'components/ListItem';
 import LoadingIndicator from 'components/LoadingIndicator';
 import Article from 'components/Article';
 
-const ArticlesList = ({ loading, error, articles }) => {
+const ArticlesList = ({ loading, error = false, articles }) => {
   if (loading) {
     return <List component={LoadingIndicator} />;
   }
