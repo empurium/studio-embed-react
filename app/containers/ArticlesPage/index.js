@@ -51,7 +51,7 @@ export class ArticlesPage extends React.PureComponent { // eslint-disable-line r
 }
 
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     loading: makeSelectLoading()(state),
     error: makeSelectError()(state),
@@ -59,7 +59,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     loadArticles: () => dispatch(actionLoadArticles()),
   };
