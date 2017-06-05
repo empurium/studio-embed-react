@@ -1,82 +1,54 @@
 import { fromJS } from 'immutable';
 
-import appReducer from '../reducer';
 import {
-  loadRepos,
-  reposLoaded,
-  repoLoadingError,
-} from '../actions';
+  loadArticles,
+  articlesLoaded,
+  articlesLoadingError,
+} from 'containers/ArticlesPage/actions';
+import appReducer from '../reducer';
 
 describe('appReducer', () => {
-  let state;
+  let initialState;
   beforeEach(() => {
-    state = fromJS({
+    initialState = fromJS({
       loading: false,
       error: false,
-      currentUser: false,
-      userData: {
-        repositories: false,
-      },
     });
   });
 
   it('should return the initial state', () => {
-    const expectedResult = state;
-    expect(appReducer(undefined, {})).toEqual(expectedResult);
+    expect(appReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should handle the loadRepos action correctly', () => {
-    const expectedResult = state
-      .set('loading', true)
-      .set('error', false)
-      .setIn(['userData', 'repositories'], false);
-
-    expect(appReducer(state, loadRepos())).toEqual(expectedResult);
+  it('should return original state without matching action', () => {
+    expect(appReducer(undefined, { type: 'NO_ACTION' })).toEqual(initialState);
   });
 
-  it('should handle the reposLoaded action correctly', () => {
-    const fixture = [{
-      name: 'My Repo',
-    }];
-    const username = 'test';
-    const expectedResult = state
-      .setIn(['userData', 'repositories'], fixture)
-      .set('loading', false)
-      .set('currentUser', username);
-
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(expectedResult);
+  // Loading bar
+  it('loading bar should show when loading something', () => {
+    expect(appReducer(undefined, loadArticles()).get('loading')).toEqual(true);
   });
 
-  it('should handle the repoLoadingError action correctly', () => {
-    const fixture = {
-      msg: 'Not found',
-    };
-    const expectedResult = state
-      .set('error', fixture)
-      .set('loading', false);
-
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(expectedResult);
+  it('loading bar should hide when loading was successful', () => {
+    expect(appReducer(undefined, articlesLoaded([])).get('loading')).toEqual(false);
   });
 
-  describe('loading state from server', () => {
-    const sampleRepos = [
-      { name: 'sample repo' },
-    ];
+  it('loading bar should hide when loading returned error', () => {
+    const error = 'Some error';
+    expect(appReducer(undefined, articlesLoadingError(error)).get('error')).toEqual(error);
+  });
 
-    beforeEach(() => {
-      state = fromJS({
-        loading: false,
-        error: false,
-        currentUser: false,
-        userData: {
-          repositories: sampleRepos,
-        },
-      });
-    });
+  // Global error
+  it('global error should be reset when starting new task(s)', () => {
+    expect(appReducer(undefined, loadArticles()).get('error')).toEqual(false);
+  });
 
-    it('should normalize the repos', () => {
-      const resposInState = appReducer(state, {}).getIn(['userData', 'repositories']);
-      expect(Array.isArray(resposInState)).toBe(true);
-    });
+  it('global error should be reset when loading task(s) were successful', () => {
+    expect(appReducer(undefined, articlesLoaded([])).get('error')).toEqual(false);
+  });
+
+  it('global error should be set when task(s) returned an error', () => {
+    const error = 'Some error';
+    expect(appReducer(undefined, articlesLoadingError(error)).get('error')).toEqual(error);
   });
 });

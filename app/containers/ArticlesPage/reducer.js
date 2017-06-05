@@ -30,8 +30,9 @@ function articlesPageReducer(state = initialState, action) {
         .set('articles', false);
     case LOAD_ARTICLES_SUCCESS:
       return state
-        .set('articles', action.articles)
-        .set('loading', false);
+        .set('loading', false)
+        .set('error', false)
+        .set('articles', action.articles);
     case LOAD_ARTICLES_ERROR:
       return state
         .set('error', action.error)

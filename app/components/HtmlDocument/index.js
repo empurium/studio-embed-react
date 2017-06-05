@@ -41,7 +41,7 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
           , please <strong>enable JS</strong> to make this app work.
         </noscript>
 
-        <div id="app">
+        <div id="publication-studio-app">
           {/* our app markup */}
           <div dangerouslySetInnerHTML={{ __html: appMarkup }} />
         </div>

@@ -10,7 +10,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import Header from 'components/Header';
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`
@@ -26,13 +25,12 @@ export function App(props) {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Publication Studio"
+        defaultTitle="Publication Studio"
         meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
+          { name: 'description', content: 'Publication Studio' },
         ]}
       />
-      <Header />
       {React.Children.toArray(props.children)}
     </AppWrapper>
   );

@@ -18,7 +18,7 @@ export default function renderInBrowser({ messages, store, routes, history }) {
           }
         />
       </AppRoot>,
-      document.getElementById('app')
+      document.getElementById('publication-studio-app')
     );
   });
 }
