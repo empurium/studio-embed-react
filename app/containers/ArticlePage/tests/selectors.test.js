@@ -1,4 +1,4 @@
-import { fromJS, List } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import {
   selectArticlePage,
   makeSelectSlugUri,
@@ -34,10 +34,7 @@ describe('makeSelectSlugUri', () => {
 describe('makeSelectArticle', () => {
   it('should select the article', () => {
     const articleSelector = makeSelectArticle();
-    const article = [
-      { title: 'article 1' },
-      { title: 'article 2' },
-    ];
+    const article = { title: 'article 1' };
     const mockedState = fromJS({
       articlePage: {
         article,
@@ -47,16 +44,13 @@ describe('makeSelectArticle', () => {
     expect(articleSelector(mockedState)).toEqual(article);
   });
 
-  it('should select the article after converting from a List', () => {
+  it('should select the article after converting from a Map', () => {
     const articleSelector = makeSelectArticle();
-    const article = [
-      { title: 'article 1' },
-      { title: 'article 2' },
-    ];
-    const articleList = new List(article);
+    const article = { title: 'article 1' };
+    const articleMap = new Map(article);
     const mockedState = fromJS({
       articlePage: {
-        article: articleList,
+        article: articleMap,
       },
     });
 
