@@ -9,10 +9,21 @@ import { makeSelectSlugUri, makeSelectArticle } from './selectors';
 
 export class ArticlePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
-    const { params, loading, error, loadArticle } = this.props;
-    if (!loading && !error && params.slugUri !== false) {
+    const { params, loading, error, loadArticle, article } = this.props;
+    if (
+      params.slugUri
+      && !loading
+      && !error
+      && this.articleChanged(article, params.slugUri)
+    ) {
       loadArticle(params.slugUri);
     }
+  }
+
+  articleChanged(article, slugUri) {
+    return article !== false
+      ? article.slug_uri !== slugUri
+      : true;
   }
 
   render() {
