@@ -13,17 +13,17 @@ import styled from 'styled-components';
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`
-  max-width: calc(850px + 16px * 2);
-  margin: 0 auto;
-  display: flex;
+  max-width: 100%;
   min-height: 100%;
-  padding: 0 16px;
+  margin: 0;
+  padding: 0;
+  display: flex;
   flex-direction: column;
 `;
 
 export function App(props) {
   return (
-    <AppWrapper>
+    <AppWrapper className="publication-studio-app-wrapper">
       <Helmet
         titleTemplate="%s - Publication Studio"
         defaultTitle="Publication Studio"
