@@ -12,27 +12,26 @@ describe('getArticle Saga', () => {
   let getArticleGenerator;
 
   beforeEach(() => {
-    getArticleGenerator = getArticle();
-
+    getArticleGenerator = getArticle({ slugUri: 'irrelevant' });
     const callDescriptor = getArticleGenerator.next().value;
+
     expect(callDescriptor).toMatchSnapshot();
   });
 
   it('should dispatch the articleLoaded action if it requests the data successfully', () => {
-    const article = [
-      { title: 'Article 1' },
-      { title: 'Article 2' },
-    ];
+    const article = { title: 'Article 1' };
     const response = {
       data: article,
     };
     const putDescriptor = getArticleGenerator.next(response).value;
+
     expect(putDescriptor).toEqual(put(articleLoaded(article)));
   });
 
   it('should call the articleLoadingError action if the response errors', () => {
     const response = new Error('Some error');
     const putDescriptor = getArticleGenerator.throw(response).value;
+
     expect(putDescriptor).toEqual(put(articleLoadingError(response)));
   });
 });
