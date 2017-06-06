@@ -11,7 +11,7 @@
  */
 
 import { createSelector } from 'reselect';
-import { List } from 'immutable';
+import { Map } from 'immutable';
 
 const selectArticlePage = (state) => state.get('articlePage');
 
@@ -24,7 +24,7 @@ const makeSelectArticle = () => createSelector(
   selectArticlePage,
   (articleState) => {
     const article = articleState.get('article');
-    if (List.isList(article)) {
+    if (Map.isMap(article)) {
       return article.toJS();
     }
 
