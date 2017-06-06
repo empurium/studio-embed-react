@@ -6,8 +6,8 @@ machine:
       6.10.3
 
 dependencies:
-  pre:
-    - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+  #pre:
+  #  - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
   override:
     - yarn install --no-progress
 
