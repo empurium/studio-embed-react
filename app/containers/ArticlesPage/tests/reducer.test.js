@@ -19,6 +19,7 @@ describe('articlesPageReducer', () => {
 
   it('returns the initial state', () => {
     const expectedState = state;
+
     expect(articlesPageReducer(undefined, {})).toEqual(expectedState);
   });
 

@@ -16,6 +16,7 @@ describe('ArticlesPage actions', () => {
       const expected = {
         type: LOAD_ARTICLES,
       };
+
       expect(loadArticles()).toEqual(expected);
     });
   });
@@ -30,6 +31,7 @@ describe('ArticlesPage actions', () => {
         type: LOAD_ARTICLES_SUCCESS,
         articles,
       };
+
       expect(articlesLoaded(articles)).toEqual(expected);
     });
   });
@@ -41,6 +43,7 @@ describe('ArticlesPage actions', () => {
         type: LOAD_ARTICLES_ERROR,
         error,
       };
+
       expect(articlesLoadingError(error)).toEqual(expected);
     });
   });
