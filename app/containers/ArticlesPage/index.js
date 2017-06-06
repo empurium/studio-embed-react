@@ -8,19 +8,6 @@ import { loadArticles as actionLoadArticles } from './actions';
 import { makeSelectArticles } from './selectors';
 
 export class ArticlesPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  static propTypes = {
-    loading: PropTypes.bool,
-    error: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.bool,
-    ]),
-    articles: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.bool,
-    ]),
-    loadArticles: PropTypes.func.isRequired,
-  };
-
   componentWillMount() {
     const { loading, error, loadArticles, articles } = this.props;
     if (!loading && !error && articles === false) {
@@ -49,6 +36,19 @@ export class ArticlesPage extends React.PureComponent { // eslint-disable-line r
     );
   }
 }
+
+ArticlesPage.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
+  articles: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.bool,
+  ]),
+  loadArticles: PropTypes.func.isRequired,
+};
 
 
 export function mapStateToProps(state) {
