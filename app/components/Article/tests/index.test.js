@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Link } from 'react-router';
 
 import Img from 'components/Img';
 import Article from '../index';
@@ -12,6 +13,7 @@ describe('<Article />', () => {
     image_url: 'thumbnail.png',
     preview: 'Preview',
     content: 'Content',
+    slug_uri: 'article-1',
   };
 
   beforeEach(() => {
@@ -25,7 +27,11 @@ describe('<Article />', () => {
   });
 
   it('should render the title', () => {
-    expect(wrapper.contains(<h1>{article.title}</h1>)).toBeTruthy();
+    expect(wrapper.contains(
+      <h1>
+        <Link to={`/article/${article.slug_uri}`}>{article.title}</Link>
+      </h1>
+    )).toBeTruthy();
   });
 
   it('should render the image', () => {
