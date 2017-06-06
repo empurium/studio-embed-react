@@ -1,4 +1,6 @@
-<img src="https://github.com/RnDStudio/embed-articles/blob/master/app/images/rnd-studio-logo/rnd-studio-logo-transparent-large.png?raw=true" alt="RnD Studio" align="center" />
+<center>
+  <img src="https://github.com/RnDStudio/embed-articles/blob/master/app/images/rnd-studio-logo/rnd-studio-logo-transparent-large.png?raw=true" alt="RnD Studio" align="center" width="300" />
+</center>
 
 <br />
 
@@ -13,7 +15,7 @@
   </a>
   <!-- Build Status -->
   <a href="https://circleci.com/gh/RnDStudio/embed-articles">
-    <img src="https://circleci.com/gh/RnDStudio/embed-articles/tree/master.svg?style=svg" alt="Build Status" />
+    <img src="https://circleci.com/gh/RnDStudio/embed-articles.svg?style=svg&circle-token=2ef7da214af86f3d20c0632fab6265a0d3affc7b" alt="Build Status" />
   </a>
   <!-- Test Coverage -->
   <a href="https://coveralls.io/r/react-boilerplate/react-boilerplate">
