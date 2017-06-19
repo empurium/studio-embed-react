@@ -19,28 +19,6 @@ function createChildRoutes(store) {
 
   return [
     {
-      path: '/',
-      name: 'articlesPage',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/ArticlesPage/reducer'),
-          import('containers/ArticlesPage/sagas'),
-          import('containers/ArticlesPage'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('articlesPage', reducer.default);
-          injectSagas(sagas.default);
-
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    },
-    {
       path: '/article/:slugUri',
       name: 'articlePage',
       getComponent(nextState, cb) {
@@ -54,6 +32,28 @@ function createChildRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('articlePage', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '*',
+      name: 'articlesPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ArticlesPage/reducer'),
+          import('containers/ArticlesPage/sagas'),
+          import('containers/ArticlesPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('articlesPage', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);
