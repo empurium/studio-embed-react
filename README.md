@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/RnDStudio/embed-articles/blob/master/app/images/rnd-studio-logo/rnd-studio-logo-transparent-large.png?raw=true" alt="RnD Studio" align="center" width="300" />
+  <img src="https://github.com/empurium/studio-embed-react/blob/master/app/images/rnd-studio-logo/rnd-studio-logo-transparent-large.png?raw=true" alt="RnD Studio" align="center" width="300" />
 </div>
 
 <br />
