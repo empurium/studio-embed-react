@@ -5,21 +5,13 @@
 <br />
 
 <div align="center">
-  <!-- Dependency Status -->
-  <a href="https://david-dm.org/RnDStudio/embed-articles">
-    <img src="https://david-dm.org/RnDStudio/embed-articles.svg" alt="Dependency Status" />
-  </a>
-  <!-- devDependency Status -->
-  <a href="https://david-dm.org/RnDStudio/embed-articles#info=devDependencies">
-    <img src="https://david-dm.org/RnDStudio/embed-articles/dev-status.svg" alt="devDependency Status" />
+  <!-- Test Coverage -->
+  <a href="https://coveralls.io/r/react-boilerplate/react-boilerplate">
+    <img src="https://coveralls.io/repos/github/react-boilerplate/react-boilerplate/badge.svg" alt="Test Coverage" />
   </a>
   <!-- Build Status -->
   <a href="https://circleci.com/gh/RnDStudio/embed-articles">
     <img src="https://circleci.com/gh/RnDStudio/embed-articles.svg?style=svg&circle-token=2ef7da214af86f3d20c0632fab6265a0d3affc7b" alt="Build Status" />
-  </a>
-  <!-- Test Coverage -->
-  <a href="https://coveralls.io/r/react-boilerplate/react-boilerplate">
-    <img src="https://coveralls.io/repos/github/react-boilerplate/react-boilerplate/badge.svg" alt="Test Coverage" />
   </a>
 </div>
 
